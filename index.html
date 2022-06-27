@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todolist</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
@@ -16,19 +16,23 @@
     <div id="root">
 
         <div class="inputs">
-            <input type="text" placeholder="Nuovo Todo">
-            <button>Aggiungi</button>
+            <input v-model="newTask"  @keyUp.enter="addTodo()" type="text" placeholder="Nuovo Todo">
+            <button @click="addTodo()">Aggiungi</button>
         </div>
 
         <div class="container">
             <ul>
 
-                <li>
-                    Chiamare la nonna
-
-                    <div>
-                        
+                <li v-for="element,index in todos">
+                    
+                    <div @click="taskDone(index)" :class="{ 'line-done' : element.done }">
+                        {{ element.task }}
                     </div>
+
+                    <div @click="removeTask(index)">
+                        <i class="fas fa-times"></i>
+                    </div>
+
                 </li>
 
             </ul>

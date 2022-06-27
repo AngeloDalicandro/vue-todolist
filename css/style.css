@@ -9,14 +9,14 @@
 }
 
 input, button {
-    padding: 5px;
+    padding: 10px;
     border: 1px solid black;
     border-radius: 10px;
     margin: 20px 0;
 }
 
 input {
-    width: 200px;
+    width: 300px;
 }
 
 button {
@@ -40,6 +40,15 @@ li {
     border-bottom: 1px solid grey;
     margin: 20px 0;
     font-size: 20px;
+}
+
+li div {
+    margin: 5px;
+    cursor: pointer;
+}
+
+i:hover {
+    color: red;
 }
 
 .line-done {

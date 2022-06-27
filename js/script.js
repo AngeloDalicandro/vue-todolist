@@ -1,7 +1,17 @@
+
+
+
 var app = new Vue({
     el: '#root',
-
     data: {
+
+        newTodo: {
+            task: null,
+            done: null
+        },
+
+        newTask: "",
+
         todos: [
             {
                 task: 'Leggi per 30 minuti',
@@ -19,6 +29,23 @@ var app = new Vue({
     },
 
     methods: {
+        addTodo() {
+            this.newTodo = {
+                task: this.newTask,
+                done: false
+            }
 
+            this.todos.push(this.newTodo);
+
+            this.newTask = "";
+        },
+
+        taskDone(a) {
+            this.todos[a].done = true;
+        },
+
+        removeTask(a) {
+            this.todos.splice(a, 1);
+        }
     }
 })
